@@ -1,0 +1,46 @@
+input:focus{
+    outline: none;
+}
+.inputtask:hover{
+    outline:none;
+}
+
+.button:focus{
+    outline: none;
+
+}
+.button{
+    border: none;
+}
+.addbutton{
+
+    background-color: pink;
+    position:absolute;
+    right:0;
+    top:calc(20%);
+}
+.buttoncalendar:focus{
+    outline: none;
+
+}
+.secondform{
+    position: relative;
+    width: 70px;
+}
+.icon{
+    position: absolute;
+    top: calc(40%);
+    left: 1.25rem;
+}
+.dateinput{
+    padding-left: 40px;
+}
+.buttons{
+    
+    position:absolute;
+    right:0;
+    top:calc(30%);
+}
+.notebtn{
+    background-color: pink;
+}

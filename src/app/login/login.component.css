@@ -1,0 +1,16 @@
+.form-floating{
+    position: relative;
+}
+.icon{
+    position: absolute;
+    top: calc(40%);
+    left: 1.25rem;
+}
+
+.form-floating label, .form-floating .form-control{
+    left: 0.25rem;
+    padding-left: 3rem;
+}
+a:hover {
+    color:rgb(18, 70, 90);
+  }

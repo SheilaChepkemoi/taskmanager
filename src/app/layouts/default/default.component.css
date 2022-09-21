@@ -1,0 +1,5 @@
+.default{
+    background-image: linear-gradient(to top, pink, white);
+    height: calc(100vh - 60px);
+   
+}

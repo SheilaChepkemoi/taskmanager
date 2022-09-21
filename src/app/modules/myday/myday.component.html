@@ -1,0 +1,142 @@
+<div class="top" style="height: 40px; margin-top: 30px; margin-left: 20px; display: flex;">
+<i class="fa fa-sun-o fa-2x" aria-hidden="true"></i>   
+<h2 class="header" style="margin-left: 10px ;">My day</h2>
+
+</div>
+<h3 style="margin-left: 20px; color:burlywood;">{{today | date: 'fullDate'}}</h3>
+<form #todoForm="ngForm">
+<div>
+
+    <div class="task" style="width: 80%; height: 50px; margin-left: 20px; margin-top: 10px; background-color: white; border-radius: 10px; display:flex; align-items: center;">
+        <button class="btn button" type="button" style="padding: 10px ; margin-left: 10px;"
+        data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" aria-label="Add a Task">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+        <input class="form-control inputtask" name="task" [(ngModel)]="todoval"
+        style="margin-left: 10px; border: none; width: 90%;" type="text"  placeholder="Add a task">
+    </div>
+      <div class="collapse" id="collapseExample" style="width: 80%; height: 50px; margin-left: 20px; margin-top: 10px; background-color: rgb(245, 244, 243); border-radius: 10px;">
+        <div class="secondform" style="display:flex;  height:50px; align-items:center;" >
+          
+            <button type="btn buttoncalendar" style="border: none; background-color: rgb(245, 244, 243);">
+              
+                <i class="icon fa fa-calendar-check-o" aria-hidden="true"></i>
+                 <input type="date" class= "form-control dateinput" name="date" [(ngModel)] ="dateval" style="border-radius: 10px; cursor: pointer;"> 
+            </button>
+           
+            <button class="btn notebtn " style="width: 100px">Add note</button>
+          
+            
+            <!-- <i class="fa fa-bell-o" style="margin-left: 10px;"aria-hidden="true"></i> -->
+            
+               
+                <button class="btn addbutton" type="button" (click)="addTask(todoForm)">
+                    Add 
+                </button>
+            
+        </div>
+
+      </div>
+</div>
+</form>
+<div class="tasks" style="margin-left: 20px; width:80%; margin-top: 10px;">
+    <h4>Tasks</h4>
+    <!-- <button type="button" class="btn btn-outline-secondary" ngbPopover="You see, I show up on hover!" triggers="mouseenter:mouseleave" popoverTitle="Pop title">
+      Hover over me!
+    </button> -->
+    
+
+    <div class="alltasks" style="overflow-y: auto; height: 400px;">
+        <div  *ngFor="let mytodo of todos" class="card" style="height: 50px; margin-bottom: 10px;">
+            <div class="carditems" style="display:flex; align-items:center" ngbPopover="Due Date: {{mytodo.date}} " placement="bottom" triggers="mouseenter:mouseleave" popoverTitle="Task Description:{{mytodo.task}} ">
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                  
+                  </div>
+                
+                <div  >
+                   
+           
+                <p class="" 
+                style="margin-left: 20px; margin-top: 10px;">{{mytodo.task}}</p>
+
+                <!-- <p class=""  style="margin-left: 20px;">{{mytodo.date}}</p> -->
+            </div>
+            
+            <div class="buttons" style="display:flex; align-items:center; ">
+            <!-- <button class="btn" style="border:none ; outline:none;" > -->
+
+
+                <!-- EDIT MODAL BEGINS HERE -->
+                <!-- Button trigger modal -->
+            <!-- <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>
+            
+            </button> -->
+
+            <button class="btn" style="border:none ; outline:none;" (click)="deleteTask(mytodo.id)" >
+                <i class="fa fa-trash fa-lg" aria-hidden="true"></i>
+            </button>
+            </div>
+            
+            </div>
+            
+            
+        </div>
+
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit task</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            
+                
+                <form>
+                    <div class="mb-3">
+                      
+                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="task" aria-describedby="emailHelp">
+                      {{editTodo?.task}}
+                    </div>
+                    <div class="mb-3">
+                      
+                      <input type="date" class="form-control" placeholder="Date">
+                      {{editTodo?.date}}
+                    
+                    </div>
+                  
+                  
+                  </form>
+                
+            
+       
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    <!-- <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <input class="accordion-button" type="text" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" placeholder="Add Task">
+              
+          
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+      
+
+      </div> -->

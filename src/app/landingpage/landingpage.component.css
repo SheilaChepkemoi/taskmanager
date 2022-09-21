@@ -1,0 +1,32 @@
+
+
+
+
+.sectionone{
+    height: 600px;
+    background-color: antiquewhite;
+    background-image: url("https://images.pexels.com/photos/7394576/pexels-photo-7394576.jpeg?");
+    background-size: 1440px;
+    width: 1440px; 
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+   
+}
+.sectiontwo{
+    height: 250px;
+    background: linear-gradient(to top, rgb(206, 119, 206), rgb(238, 194, 238) );
+    
+}
+.buttonone{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* .wrapper{
+    display: flex;
+   align-items: center;
+    justify-content: center;
+} */
